@@ -1,0 +1,61 @@
+{{- $seoTitle := .Params.seo_title | default .Title -}}
+{{- $description := .Description | default .Params.description | default (i18n "site_description") -}}
+{{- $socialImage := "images/social-card.webp" | absURL -}}
+<!doctype html>
+<html lang="{{ .Language.Locale }}" dir="{{ .Language.Direction | default "ltr" }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ $seoTitle }}</title>
+    <meta name="description" content="{{ $description }}">
+    <meta name="robots" content="{{ if or .Params.noindex (eq .Kind "404") }}noindex, nofollow{{ else }}index, follow, max-image-preview:large{{ end }}">
+    <link rel="canonical" href="{{ .Permalink }}">
+    <meta property="og:type" content="{{ if and (eq .Section "blog") .IsPage }}article{{ else }}website{{ end }}">
+    <meta property="og:site_name" content="Keti Petriashvili — Psychologist">
+    <meta property="og:title" content="{{ $seoTitle }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:url" content="{{ .Permalink }}">
+    <meta property="og:image" content="{{ $socialImage }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="{{ i18n "social_image_alt" }}">
+    <meta property="og:locale" content="{{ replace .Language.Locale "-" "_" }}">
+    {{- range .Translations }}
+    <meta property="og:locale:alternate" content="{{ replace .Language.Locale "-" "_" }}">
+    {{- end }}
+    {{- if and (eq .Section "blog") .IsPage }}
+    <meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+    <meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+    <meta property="article:author" content="{{ .Params.author }}">
+    {{- end }}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seoTitle }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    <meta name="twitter:image" content="{{ $socialImage }}">
+    {{- range .AllTranslations }}
+    <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+        {{- if eq .Language.Lang "en" }}
+    <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+        {{- end }}
+    {{- end }}
+    <link rel="icon" href="{{ "images/logo-mark.webp" | relURL }}" type="image/webp">
+    <meta name="theme-color" content="#143f4b">
+    {{- with resources.Get "css/main.css" }}
+        {{- if hugo.IsProduction }}
+            {{- with . | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}">
+            {{- end }}
+        {{- else }}
+    <link rel="stylesheet" href="{{ .RelPermalink }}">
+        {{- end }}
+    {{- end }}
+    {{ partial "language-routing.html" . }}
+</head>
+<body>
+    <a class="skip-link" href="#main-content">{{ i18n "skip_to_content" }}</a>
+    {{ partial "header.html" . }}
+    {{ block "main" . }}{{ end }}
+    {{ partial "footer.html" . }}
+    {{ partial "language-menu-script.html" . }}
+</body>
+</html>

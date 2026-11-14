@@ -1,0 +1,54 @@
+{{- $page := . -}}
+{{- $languageMatches := where hugo.Data.languages "code" .Language.Lang -}}
+{{- $currentLanguage := index $languageMatches 0 -}}
+{{- $currentFlag := printf "images/flags/%s.webp" $currentLanguage.code -}}
+{{- $aboutPage := site.GetPage "/about" -}}
+{{- $blogPage := site.GetPage "/blog" -}}
+{{- $contactURL := printf "%s#contact" site.Home.RelPermalink -}}
+<header class="site-header">
+    <div class="shell header-inner">
+        <a class="brand" href="{{ site.Home.RelPermalink }}" aria-label="Keti Petriashvili — {{ i18n "nav_home" }}">
+            <img src="{{ "images/logo-mark.webp" | relURL }}" alt="" width="44" height="44">
+            <span><strong>Keti Petriashvili</strong><small>{{ i18n "professional_title" }}</small></span>
+        </a>
+        <nav class="desktop-nav" aria-label="{{ i18n "primary_navigation" }}">
+            <a href="{{ site.Home.RelPermalink }}">{{ i18n "nav_home" }}</a>
+            {{- with $aboutPage }}<a href="{{ .RelPermalink }}">{{ i18n "nav_about" }}</a>{{ end }}
+            {{- with $blogPage }}<a href="{{ .RelPermalink }}">{{ i18n "nav_blog" }}</a>{{ end }}
+            <a href="{{ $contactURL }}">{{ i18n "nav_contact" }}</a>
+        </nav>
+        <div class="header-actions">
+            <details class="language-switcher" data-header-menu>
+                <summary aria-label="{{ i18n "language_selector_label" }}: {{ $currentLanguage.native_name }}">
+                    <img src="{{ $currentFlag | relURL }}" alt="" width="28" height="28">
+                    <span>{{ $currentLanguage.code | upper }}</span>
+                </summary>
+                <nav class="language-menu" aria-label="{{ i18n "language_selector_label" }}" data-language-count="{{ len site.Home.AllTranslations }}">
+                    {{- range site.Home.AllTranslations }}
+                        {{- $matches := where hugo.Data.languages "code" .Language.Lang -}}
+                        {{- if gt (len $matches) 0 -}}
+                            {{- $language := index $matches 0 -}}
+                            {{- $targetURL := .RelPermalink -}}
+                            {{- range $page.AllTranslations -}}
+                                {{- if eq .Language.Lang $language.code -}}{{- $targetURL = .RelPermalink -}}{{- end -}}
+                            {{- end -}}
+                    <a href="{{ $targetURL }}" lang="{{ $language.locale }}" hreflang="{{ $language.locale }}" data-language-code="{{ $language.code }}"{{ if eq $language.code $page.Language.Lang }} aria-current="page"{{ end }}>
+                        <img src="{{ printf "images/flags/%s.webp" $language.code | relURL }}" alt="" width="28" height="28">
+                        <span dir="auto">{{ $language.native_name }}</span>
+                    </a>
+                        {{- end -}}
+                    {{- end }}
+                </nav>
+            </details>
+            <details class="mobile-menu" data-header-menu>
+                <summary aria-label="{{ i18n "open_navigation" }}"><span></span><span></span><span></span></summary>
+                <nav aria-label="{{ i18n "primary_navigation" }}">
+                    <a href="{{ site.Home.RelPermalink }}">{{ i18n "nav_home" }}</a>
+                    {{- with $aboutPage }}<a href="{{ .RelPermalink }}">{{ i18n "nav_about" }}</a>{{ end }}
+                    {{- with $blogPage }}<a href="{{ .RelPermalink }}">{{ i18n "nav_blog" }}</a>{{ end }}
+                    <a href="{{ $contactURL }}">{{ i18n "nav_contact" }}</a>
+                </nav>
+            </details>
+        </div>
+    </div>
+</header>

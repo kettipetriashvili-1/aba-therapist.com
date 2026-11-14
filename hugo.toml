@@ -1,0 +1,131 @@
+baseURL = "https://aba-therapist.com/"
+title = "Keti Petriashvili | Psychologist"
+locale = "en-GB"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[languages]
+  [languages.en]
+    locale = "en-GB"
+    weight = 1
+  [languages.de]
+    locale = "de-DE"
+    disabled = true
+    weight = 2
+  [languages.es]
+    locale = "es-ES"
+    disabled = true
+    weight = 3
+  [languages.fr]
+    locale = "fr-FR"
+    disabled = true
+    weight = 4
+  [languages.ru]
+    locale = "ru-RU"
+    disabled = true
+    weight = 5
+  [languages.pt-br]
+    locale = "pt-BR"
+    disabled = true
+    weight = 6
+  [languages.it]
+    locale = "it-IT"
+    disabled = true
+    weight = 7
+  [languages.pl]
+    locale = "pl-PL"
+    disabled = true
+    weight = 8
+  [languages.ja]
+    locale = "ja-JP"
+    disabled = true
+    hasCJKLanguage = true
+    weight = 9
+  [languages.zh-cn]
+    locale = "zh-CN"
+    disabled = true
+    hasCJKLanguage = true
+    weight = 10
+  [languages.nl]
+    locale = "nl-NL"
+    disabled = true
+    weight = 11
+  [languages.tr]
+    locale = "tr-TR"
+    disabled = true
+    weight = 12
+  [languages.ko]
+    locale = "ko-KR"
+    disabled = true
+    hasCJKLanguage = true
+    weight = 13
+  [languages.fa]
+    locale = "fa-IR"
+    disabled = true
+    direction = "rtl"
+    weight = 14
+  [languages.ar]
+    locale = "ar-SA"
+    disabled = true
+    direction = "rtl"
+    weight = 15
+  [languages.cs]
+    locale = "cs-CZ"
+    disabled = true
+    weight = 16
+  [languages.ro]
+    locale = "ro-RO"
+    disabled = true
+    weight = 17
+  [languages.hu]
+    locale = "hu-HU"
+    disabled = true
+    weight = 18
+  [languages.id]
+    locale = "id-ID"
+    disabled = true
+    weight = 19
+  [languages.sv]
+    locale = "sv-SE"
+    disabled = true
+    weight = 20
+  [languages.no]
+    locale = "no-NO"
+    disabled = true
+    weight = 21
+  [languages.fi]
+    locale = "fi-FI"
+    disabled = true
+    weight = 22
+  [languages.el]
+    locale = "el-GR"
+    disabled = true
+    weight = 23
+  [languages.zh-tw]
+    locale = "zh-TW"
+    disabled = true
+    hasCJKLanguage = true
+    weight = 24
+
+[outputs]
+  home = ["HTML"]
+  section = ["HTML", "RSS"]
+
+[sitemap]
+  changeFreq = "monthly"
+  priority = 0.7
+  filename = "sitemap.xml"
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+  [markup.tableOfContents]
+    startLevel = 2
+    endLevel = 3
+    ordered = false
+
+[minify]
+  minifyOutput = true

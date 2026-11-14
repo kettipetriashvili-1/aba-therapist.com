@@ -1,0 +1,18 @@
+{{- $legalPage := site.GetPage "/legal" -}}
+<footer class="site-footer">
+    <div class="shell footer-grid">
+        <div class="footer-brand">
+            <img src="{{ "images/logo-mark.webp" | relURL }}" alt="" width="48" height="48">
+            <div><strong>Keti Petriashvili</strong><span>{{ i18n "professional_title" }}</span></div>
+        </div>
+        <p>{{ i18n "footer_statement" }}</p>
+        <nav aria-label="{{ i18n "footer_navigation" }}">
+            <a href="mailto:info@aba-therapist.com">info@aba-therapist.com</a>
+            {{- with $legalPage }}<a href="{{ .RelPermalink }}">{{ i18n "nav_legal" }}</a>{{ end }}
+        </nav>
+    </div>
+    <div class="shell footer-bottom">
+        <span>© {{ now.Year }} Keti Petriashvili</span>
+        <span>{{ i18n "footer_note" }}</span>
+    </div>
+</footer>

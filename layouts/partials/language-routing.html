@@ -1,0 +1,38 @@
+{{- if and .IsHome (eq .Language.Lang "en") -}}
+    {{- $routes := dict -}}
+    {{- range site.Home.AllTranslations -}}
+        {{- $routes = merge $routes (dict .Language.Lang .RelPermalink) -}}
+    {{- end -}}
+<script>
+(() => {
+    const routes = {{ $routes | jsonify | safeJS }};
+    const storageKey = "aba-therapist-language";
+    let storedLanguage = "";
+    try { storedLanguage = window.localStorage.getItem(storageKey) || ""; } catch (error) {}
+    const goToLanguage = (language) => {
+        if (!routes[language] || language === "en") return false;
+        window.location.replace(routes[language] + window.location.search + window.location.hash);
+        return true;
+    };
+    if (storedLanguage && routes[storedLanguage]) {
+        goToLanguage(storedLanguage);
+        return;
+    }
+    const browserLanguages = Array.isArray(navigator.languages) && navigator.languages.length
+        ? navigator.languages : [navigator.language || ""];
+    const resolveLanguage = (value) => {
+        const language = String(value).toLowerCase().replace(/_/g, "-");
+        if (!language) return "";
+        if (language.startsWith("zh")) return /(^|-)hant($|-)|-(tw|hk|mo)($|-)/.test(language) ? "zh-tw" : "zh-cn";
+        if (language === "pt" || language.startsWith("pt-")) return "pt-br";
+        const primary = language.split("-")[0];
+        if (primary === "nb" || primary === "nn") return "no";
+        return routes[language] ? language : (routes[primary] ? primary : "");
+    };
+    for (const browserLanguage of browserLanguages) {
+        const language = resolveLanguage(browserLanguage);
+        if (language && goToLanguage(language)) return;
+    }
+})();
+</script>
+{{- end -}}

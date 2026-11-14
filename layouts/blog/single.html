@@ -1,0 +1,18 @@
+{{ define "main" }}
+<main id="main-content" class="article-main">
+    <article>
+        <header class="article-header"><div class="shell article-header-inner"><a class="breadcrumb-link" href="{{ .CurrentSection.RelPermalink }}">← {{ i18n "all_blog_posts" }}</a><p class="eyebrow">{{ i18n "blog_eyebrow" }}</p><h1>{{ .Title }}</h1><div class="article-byline"><span>{{ if .Params.previewOnly }}{{ i18n "article_preview_label" }}{{ else }}{{ .Params.author }}{{ end }}</span><time datetime="{{ .Date.Format "2006-01-02" }}">{{ time.Format ":date_long" .Date }}</time><span>{{ .ReadingTime }} {{ i18n "minutes_read" }}</span></div></div></header>
+        <div class="shell article-preamble"><div class="article-notices">
+            {{ if .Params.previewOnly }}<p class="preview-notice">{{ i18n "article_preview_notice" }}</p>{{ end }}
+            {{- if ne .Language.Lang "en" }}{{- with where .AllTranslations "Language.Lang" "en" }}<p class="article-translation-notice">{{ i18n "article_ai_translation_notice" }} <a href="{{ (index . 0).RelPermalink }}" data-language-code="en">{{ i18n "ai_translation_link" }}</a></p>{{ end }}{{ end }}
+            <p class="article-support-notice">{{ i18n "article_support_notice" }} <a href="{{ site.Home.RelPermalink }}#contact">{{ i18n "contact_us" }}</a></p>
+        </div><p class="article-deck">{{ .Params.summary }}</p><hr><section class="article-toc" aria-labelledby="toc-heading"><h2 id="toc-heading">{{ i18n "page_contents" }}</h2>{{ .TableOfContents }}</section></div>
+        <div class="shell article-layout"><div class="article-body">{{ .Content }}</div></div>
+    </article>
+    <section class="article-cta"><div class="shell"><p class="eyebrow light">{{ i18n "contact_eyebrow" }}</p><h2>{{ i18n "article_cta_title" }}</h2><a class="button button-light" href="{{ site.Home.RelPermalink }}#contact">{{ i18n "hero_cta" }} →</a></div></section>
+</main>
+{{- if not .Params.previewOnly -}}
+{{- $author := dict "@type" "Person" "name" .Params.author "url" site.BaseURL -}}
+<script type="application/ld+json">{{ dict "@context" "https://schema.org" "@type" "BlogPosting" "headline" .Title "description" .Description "url" .Permalink "datePublished" (.Date.Format "2006-01-02") "dateModified" (.Lastmod.Format "2006-01-02") "inLanguage" .Language.Locale "wordCount" .WordCount "author" $author "image" ("images/social-card.webp" | absURL) | jsonify | safeJS }}</script>
+{{- end -}}
+{{ end }}

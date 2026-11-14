@@ -1,0 +1,23 @@
+<script>
+(() => {
+    const storageKey = "aba-therapist-language";
+    const menus = [...document.querySelectorAll("[data-header-menu]")];
+    document.querySelectorAll("[data-language-code]").forEach((link) => {
+        link.addEventListener("click", () => {
+            try { window.localStorage.setItem(storageKey, link.dataset.languageCode); } catch (error) {}
+        });
+    });
+    menus.forEach((menu) => menu.addEventListener("toggle", () => {
+        if (menu.open) menus.forEach((other) => { if (other !== menu) other.open = false; });
+    }));
+    document.addEventListener("click", (event) => {
+        menus.forEach((menu) => { if (menu.open && !menu.contains(event.target)) menu.open = false; });
+    });
+    document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape") return;
+        menus.forEach((menu) => {
+            if (menu.open) { menu.open = false; menu.querySelector("summary").focus(); }
+        });
+    });
+})();
+</script>

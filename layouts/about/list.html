@@ -1,0 +1,46 @@
+{{ define "main" }}
+<main id="main-content">
+    <section class="page-hero about-hero">
+        <div class="shell page-hero-grid">
+            <div><p class="eyebrow">{{ i18n "about_eyebrow" }}</p><h1>{{ i18n "about_title" }}</h1><p>{{ i18n "about_lead" }}</p></div>
+            <div class="about-portrait"><img src="{{ "images/about-keti.webp" | relURL }}" width="1024" height="1280" alt="{{ i18n "portrait_alt" }}"></div>
+        </div>
+    </section>
+    <section class="section about-story">
+        <div class="shell story-grid">
+            <aside><span>01</span><p>{{ i18n "about_sidebar" }}</p></aside>
+            <div class="prose-large"><h2>{{ i18n "about_story_title" }}</h2><p>{{ i18n "about_story_one" }}</p><p>{{ i18n "about_story_two" }}</p><p>{{ i18n "about_story_three" }}</p></div>
+        </div>
+    </section>
+    <section class="section values-section">
+        <div class="shell"><p class="eyebrow">{{ i18n "values_eyebrow" }}</p><h2>{{ i18n "values_title" }}</h2></div>
+        <div class="shell value-grid">
+            <article><span>01</span><h3>{{ i18n "value_one_title" }}</h3><p>{{ i18n "value_one_text" }}</p></article>
+            <article><span>02</span><h3>{{ i18n "value_two_title" }}</h3><p>{{ i18n "value_two_text" }}</p></article>
+            <article><span>03</span><h3>{{ i18n "value_three_title" }}</h3><p>{{ i18n "value_three_text" }}</p></article>
+        </div>
+    </section>
+    <section class="section about-credentials" id="credentials">
+        <div class="shell section-heading-row"><div><p class="eyebrow">{{ i18n "credentials_eyebrow" }}</p><h2>{{ i18n "credentials_title" }}</h2></div><p>{{ i18n "about_credentials_notice" }}</p></div>
+        <div class="shell credential-table">
+            {{- range slice "master" "bachelor" "iba" "rbt" "aba" "cbt" "psychoanalysis" }}
+            <div><span>{{ i18n (printf "qualification_%s_dates" .) }}</span><strong>{{ i18n (printf "qualification_%s_title" .) }}</strong><small>{{ i18n (printf "qualification_%s_detail" .) }}</small></div>
+            {{- end }}
+        </div>
+    </section>
+    <section class="section experience-section" id="experience">
+        <div class="shell"><p class="eyebrow">{{ i18n "experience_eyebrow" }}</p><h2>{{ i18n "experience_title" }}</h2></div>
+        <div class="shell experience-grid">
+            {{- range slice "autism" "alte" "saba" "trainer" "psychotherapy" "counselling" "ari" "psychosynthesis" }}
+            <article><p class="experience-dates">{{ i18n (printf "experience_%s_dates" .) }}</p><h3>{{ i18n (printf "experience_%s_title" .) }}</h3><p>{{ i18n (printf "experience_%s_text" .) }}</p></article>
+            {{- end }}
+        </div>
+        <div class="shell background-notes prose-large">
+            <h3>{{ i18n "earlier_title" }}</h3><p>{{ i18n "earlier_clinical" }}</p><p>{{ i18n "earlier_volunteer" }}</p>
+            <h3>{{ i18n "research_title" }}</h3><p>{{ i18n "research_text" }}</p><p><a href="https://doi.org/10.13140/RG.2.2.27167.21929">{{ i18n "research_link" }} ↗</a></p><p>{{ i18n "languages_text" }}</p><p><a href="https://www.linkedin.com/in/keti-petriashvili/">{{ i18n "professional_profile_link" }} ↗</a></p>
+            <h3>{{ i18n "writing_title" }}</h3><p>{{ i18n "writing_text" }}</p>
+        </div>
+    </section>
+    <section class="mini-cta"><div class="shell"><h2>{{ i18n "about_cta_title" }}</h2><a class="button button-light" href="{{ site.Home.RelPermalink }}#contact">{{ i18n "hero_cta" }} →</a></div></section>
+</main>
+{{ end }}

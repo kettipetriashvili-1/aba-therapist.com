@@ -1,0 +1,13 @@
+{{ define "main" }}
+<main id="main-content">
+    <section class="page-hero legal-hero"><div class="shell narrow"><p class="eyebrow">{{ i18n "legal_eyebrow" }}</p><h1>{{ i18n "legal_title" }}</h1><p>{{ i18n "legal_lead" }}</p><div class="legal-draft-banner"><strong>{{ i18n "draft_label" }}</strong><span>{{ i18n "legal_draft_warning" }}</span></div></div></section>
+    <section class="section legal-content"><div class="shell legal-layout">
+        <nav aria-label="{{ i18n "page_contents" }}"><a href="#legal-notice">{{ i18n "legal_notice_title" }}</a><a href="#privacy">{{ i18n "privacy_title" }}</a><a href="#external-services">{{ i18n "external_services_title" }}</a></nav>
+        <div class="legal-prose">
+            <section id="legal-notice"><p class="eyebrow">01</p><h2>{{ i18n "legal_notice_title" }}</h2><p>{{ i18n "legal_notice_intro" }}</p><dl><div><dt>{{ i18n "provider_label" }}</dt><dd>Keti Petriashvili</dd></div><div><dt>{{ i18n "professional_title" }}</dt><dd>{{ i18n "professional_title" }}</dd></div><div><dt>{{ i18n "business_address_label" }}</dt><dd>[{{ i18n "details_required" }}]</dd></div><div><dt>{{ i18n "email_label" }}</dt><dd><a href="mailto:info@aba-therapist.com">info@aba-therapist.com</a></dd></div><div><dt>{{ i18n "registration_label" }}</dt><dd>[{{ i18n "details_required" }}]</dd></div></dl></section>
+            <section id="privacy"><p class="eyebrow">02</p><h2>{{ i18n "privacy_title" }}</h2><h3>{{ i18n "privacy_static_title" }}</h3><p>{{ i18n "privacy_static_text" }}</p><h3>{{ i18n "privacy_contact_title" }}</h3><p>{{ i18n "privacy_contact_text" }}</p><h3>{{ i18n "privacy_logs_title" }}</h3><p>{{ i18n "privacy_logs_text" }}</p><h3>{{ i18n "privacy_rights_title" }}</h3><p>{{ i18n "privacy_rights_text" }}</p></section>
+            <section id="external-services"><p class="eyebrow">03</p><h2>{{ i18n "external_services_title" }}</h2><p>{{ i18n "external_services_text" }}</p><p>{{ i18n "legal_review_required" }}</p></section>
+        </div>
+    </div></section>
+</main>
+{{ end }}
