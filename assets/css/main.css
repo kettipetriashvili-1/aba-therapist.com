@@ -447,12 +447,13 @@ html[dir="rtl"] .page-translation-notice, html[dir="rtl"] .draft-warning, html[d
     .certificate-seal { width: 54px; height: 54px; }
 }
 
-/* On desktop, the sticky header, hero and three-step strip fill one viewport. */
+/* Preserve portrait space even when the laptop viewport is short. */
 @media (min-width: 1021px) {
     .site-header,
     .header-inner { height: 84px; min-height: 84px; }
     .hero,
-    .hero-grid { height: calc(100svh - 196px); min-height: 0; }
+    .hero-grid { height: calc(100svh - 196px); min-height: max(780px, 50vw); }
+    .hero-background { object-position: center top; }
     .signal-strip,
     .signal-grid { height: 112px; }
     .signal-grid > div { align-content: center; height: 112px; }
