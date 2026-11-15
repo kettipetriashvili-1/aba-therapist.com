@@ -1,10 +1,13 @@
-// Browser regression check for the desktop hero portrait.
+// Browser regression check for a consistent, unobscured hero portrait.
 // Run in the homepage with agent-browser eval or browser developer tools.
 (() => {
-  if (innerWidth < 1021) return { skipped: 'Desktop portrait check' };
+
   const image = document.querySelector('.hero-background');
   const panel = document.querySelector('.hero-copy');
   if (!image?.complete || !image.naturalWidth) throw new Error('Hero image not loaded');
+  if (!new URL(image.currentSrc).pathname.endsWith('/images/hero-therapy.webp')) {
+    throw new Error('Mobile and desktop must use the same portrait image');
+  }
   const box = image.getBoundingClientRect();
   const copy = panel.getBoundingClientRect();
   const scale = Math.max(box.width / image.naturalWidth, box.height / image.naturalHeight);

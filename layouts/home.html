@@ -1,10 +1,7 @@
 {{ define "main" }}
 <main id="main-content">
     <section class="hero">
-        <picture>
-            <source media="(max-width: 760px)" srcset="{{ "images/hero-therapy-mobile.webp" | relURL }}">
-            <img class="hero-background" src="{{ "images/hero-therapy.webp" | relURL }}" width="1536" height="864" alt="{{ i18n "hero_image_alt" }}" fetchpriority="high">
-        </picture>
+        <img class="hero-background" src="{{ "images/hero-therapy.webp" | relURL }}" width="1536" height="864" alt="{{ i18n "hero_image_alt" }}" fetchpriority="high">
         <div class="hero-overlay" aria-hidden="true"></div>
         <div class="shell hero-grid">
             <div class="hero-copy">
