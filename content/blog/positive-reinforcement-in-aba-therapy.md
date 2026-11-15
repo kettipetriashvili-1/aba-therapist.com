@@ -1,7 +1,7 @@
 ---
 title: "What Positive Reinforcement Looks Like in ABA Therapy"
 seo_title: "Positive Reinforcement in ABA Therapy: A Parent-Friendly Guide"
-description: "A practical explanation of positive reinforcement in ABA therapy, including how reinforcers are selected, used and reviewed with autistic children."
+description: "A practical explanation of positive reinforcement in ABA therapy, including how reinforcers are selected, used and reviewed with children."
 summary: "Positive reinforcement is more than giving a reward. Used thoughtfully, it helps make useful skills worth practising while keeping goals clear, individual and respectful."
 author: "Website draft"
 previewOnly: true

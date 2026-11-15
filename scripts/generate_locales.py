@@ -57,17 +57,17 @@ PROTECTED_TERMS = {
 }
 
 PAGE_META = {
-    "home_title": "Keti Petriashvili | ABA Therapy for Autistic Children",
+    "home_title": "Keti Petriashvili | ABA Therapy for Children",
     "home_description": "English-language psychological and ABA support for children and families from clinical psychologist Keti Petriashvili, with respect for assent and autonomy.",
     "about_title": "About Keti Petriashvili",
     "about_description": "Meet Keti Petriashvili: clinical psychologist, International Behavior Analyst and lecturer. My approach, qualifications and work with children and families.",
     "legal_title": "Legal Notice & Privacy",
     "legal_description": "Draft legal and privacy information for aba-therapist.com.",
     "blog_title": "ABA Therapy Blog",
-    "blog_description": "Practical articles about supportive ABA practice, autistic children, communication, learning and family collaboration.",
+    "blog_description": "Practical articles about supportive ABA practice, children, communication, learning and family collaboration.",
     "article_title": "What Positive Reinforcement Looks Like in ABA Therapy",
     "article_seo_title": "Positive Reinforcement in ABA Therapy: A Parent-Friendly Guide",
-    "article_description": "A practical explanation of positive reinforcement in ABA therapy, including how reinforcers are selected, used and reviewed with autistic children.",
+    "article_description": "A practical explanation of positive reinforcement in ABA therapy, including how reinforcers are selected, used and reviewed with children.",
     "article_summary": "Positive reinforcement is more than giving a reward. Used thoughtfully, it helps make useful skills worth practising while keeping goals clear, individual and respectful.",
 }
 

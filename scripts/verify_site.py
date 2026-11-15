@@ -58,7 +58,7 @@ def main() -> None:
     }
     html = {name: read(path) for name, path in pages.items()}
 
-    assert "Thoughtful ABA support for autistic children" in html["home"]
+    assert "Thoughtful ABA support for children" in html["home"]
     assert re.search(r"\bid=['\"]?contact(?:['\"]|\s|>)", html["home"])
     assert "mailto:info@aba-therapist.com" in html["home"]
     assert "signal.me/#p/+995598568368" in html["home"]
@@ -103,6 +103,7 @@ def main() -> None:
     rendered_css_files: set[Path] = set()
     for page_path in output.rglob("*.html"):
         document = read(page_path)
+        assert not re.search(r"\bautistic\b", document, re.I), f"Unwanted wording in {page_path}"
         assert "info@aba-therapy.com" not in document
         assert "ketti.petriashvili@gmail.com" not in document
         assert re.search(r"<html\s+lang=['\"]?en-GB(?:['\"]|\s)", document)
