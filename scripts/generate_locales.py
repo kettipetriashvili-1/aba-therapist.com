@@ -58,7 +58,7 @@ PROTECTED_TERMS = {
 
 PAGE_META = {
     "home_title": "Keti Petriashvili | ABA Therapy for Children",
-    "home_description": "English-language psychological and ABA support for children and families from clinical psychologist Keti Petriashvili, with respect for assent and autonomy.",
+    "home_description": "Psychological and ABA support for children and families from clinical psychologist Keti Petriashvili, with respect for assent and autonomy.",
     "about_title": "About Keti Petriashvili",
     "about_description": "Meet Keti Petriashvili: clinical psychologist, International Behavior Analyst and lecturer. My approach, qualifications and work with children and families.",
     "legal_title": "Legal Notice & Privacy",
